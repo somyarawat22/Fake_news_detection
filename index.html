@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake News Detection</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+
+        .container {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 15px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: gray;
+            font-size: 15px;
+        }
+
+        textarea {
+            width: 90%;
+            height: 120px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #667eea;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5a67d8;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .real {
+            color: green;
+        }
+
+        .fake {
+            color: red;
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>📰 Fake News Detection</h1>
+        <p>Enter a news headline to check whether it is Real or Fake using AI</p>
+
+        <form action="/predict" method="post">
+            <textarea name="news" placeholder="Enter news text here..."></textarea><br>
+            <button type="submit">Check News</button>
+        </form>
+
+        {% if result %}
+            <div class="result 
+                {% if 'Real' in result %}real{% else %}fake{% endif %}">
+                {{ result }}
+            </div>
+        {% endif %}
+
+        <div class="footer">
+            Project by Your Name | Fake News Detection using LSTM
+        </div>
+    </div>
+
+</body>
+</html>
